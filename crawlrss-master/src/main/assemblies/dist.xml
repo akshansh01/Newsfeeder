@@ -1,0 +1,37 @@
+<assembly>
+  <id>dist</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+  	<dependencySet>
+  		<outputDirectory>/lib</outputDirectory>
+        <unpack>false</unpack>
+        <excludes>
+        	<!-- Is included via fileSet below. 
+        	     That ensures that SNAPSHOT builds retain buildnumber on the enclosed JAR -->
+        	<exclude>is.landsbokasafn:crawl-rss</exclude>
+        </excludes>
+  	</dependencySet>
+  </dependencySets>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>LICENSE*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target</directory>
+      <outputDirectory>lib</outputDirectory>
+      <includes>
+        <include>*.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+        <directory>src/main/conf/jobs</directory>
+        <outputDirectory>/jobs</outputDirectory>
+    </fileSet>
+  </fileSets>
+</assembly>
